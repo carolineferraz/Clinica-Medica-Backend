@@ -9,21 +9,21 @@ import med.voll.api.domain.endereco.DadosEndereco;
 
 public record DadosCadastroPaciente(
 		
-		@NotBlank
+		@NotBlank(message = "Este campo não pode estar em branco")
 		String nome,
 		
-		@NotBlank
+		@NotBlank(message = "Este campo não pode estar em branco")
 		@Email
 		String email,
 		
-		@NotBlank
+		@NotBlank(message = "Este campo não pode estar em branco")
 		String telefone,
 		
-		@NotBlank
-		@Pattern(regexp = "\\d{11}")
+		@NotBlank(message = "Este campo não pode estar em branco")
+		@Pattern(regexp = "\\d{11}", message = "Este campo deve conter 11 caracteres")
 		String cpf,
 		
-		@NotNull
+		@NotNull(message = "Este campo não pode estar em branco")
 		@Valid
 		DadosEndereco endereco) {
 
