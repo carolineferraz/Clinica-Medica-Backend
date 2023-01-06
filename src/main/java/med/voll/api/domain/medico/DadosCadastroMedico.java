@@ -1,5 +1,6 @@
 package med.voll.api.domain.medico;
 
+import jakarta.persistence.Column;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -14,6 +15,7 @@ public record DadosCadastroMedico(
 		
 		@NotBlank(message = "Este campo não pode estar em branco")
 		@Email(message = "Este campo não contém um formato de e-mail válido")
+		@Column(unique=true)
 		String email,
 		
 		@NotBlank(message = "Este campo não pode estar em branco")

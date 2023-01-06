@@ -1,5 +1,7 @@
 package med.voll.api.infrastructure;
 
+import java.sql.SQLIntegrityConstraintViolationException;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -15,17 +17,25 @@ public class TratadorDeErros {
 	public ResponseEntity tratarErro404() {
 		return ResponseEntity.notFound().build();
 	}
-	
+
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity tratarErro400(MethodArgumentNotValidException ex) {
 		var erros = ex.getFieldErrors();
 		return ResponseEntity.badRequest().body(erros.stream().map(DadosErroValidacao::new).toList());
 	}
-	
+
 	private record DadosErroValidacao(String campo, String mensagem) {
-		
+
 		public DadosErroValidacao(FieldError erro) {
 			this(erro.getField(), erro.getDefaultMessage());
 		}
 	}
+
+	@ExceptionHandler(SQLIntegrityConstraintViolationException.class)
+	public ResponseEntity tratarIntegrityConstraintViolation(SQLIntegrityConstraintViolationException ex) {
+		var er = ex.getMessage();
+		return ResponseEntity.badRequest().body(er);
+	}
+
+
 }

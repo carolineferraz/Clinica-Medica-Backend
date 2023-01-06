@@ -5,22 +5,22 @@ import jakarta.validation.constraints.Pattern;
 
 public record DadosEndereco(
 		
-		@NotBlank
+		@NotBlank(message = "Este campo não pode estar em branco")
 		String logradouro, 
 		String numero, 
 		String complemento,
 		
-		@NotBlank
-		@Pattern(regexp = "\\d{8}")
+		@NotBlank(message = "Este campo não pode estar em branco")
+		@Pattern(regexp = "\\d{8}", message = "Este campo deve conter 8 caracteres")
 		String cep,
 		
-		@NotBlank
+		@NotBlank(message = "Este campo não pode estar em branco")
 		String bairro,
 		
-		@NotBlank
+		@NotBlank(message = "Este campo não pode estar em branco")
 		String cidade,
 		
-		@NotBlank
+		@NotBlank(message = "Este campo não pode estar em branco")
 		String uf) {
 
 }
