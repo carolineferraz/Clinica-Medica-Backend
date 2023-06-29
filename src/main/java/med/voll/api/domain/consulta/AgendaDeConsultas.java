@@ -29,9 +29,18 @@ public class AgendaDeConsultas {
 		
 		var medico = escolherMedico(dados);
 		var paciente = pacienteRepository.findById(dados.idPaciente()).get();
-		var consulta = new Consulta(null, medico, paciente, dados.data());
+		var consulta = new Consulta(null, medico, paciente, dados.data(), null);
 		
 		consultaRepository.save(consulta);
+	}
+	
+	public void cancelar(DadosCancelamentoConsulta dados) {
+	    if (!consultaRepository.existsById(dados.idConsulta())) {
+	        throw new ValidacaoException("Id da consulta informado não existe!");
+	    }
+
+	    var consulta = consultaRepository.getReferenceById(dados.idConsulta());
+	    consulta.cancelar(dados.motivo());
 	}
 	
 	private Medico escolherMedico(DadosAgendamentoConsulta dados) {
