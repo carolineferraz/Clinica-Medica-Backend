@@ -91,6 +91,14 @@ public class Consulta {
 		this.data = data;
 	}
 	
+	public MotivoCancelamento getMotivoCancelamento() {
+		return motivoCancelamento;
+	}
+
+	public void setMotivoCancelamento(MotivoCancelamento motivoCancelamento) {
+		this.motivoCancelamento = motivoCancelamento;
+	}
+	
 	public void cancelar(MotivoCancelamento motivo) {
 	    this.motivoCancelamento = motivo;
 	}
