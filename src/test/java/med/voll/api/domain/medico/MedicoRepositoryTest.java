@@ -14,6 +14,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
 
 import med.voll.api.domain.consulta.Consulta;
 import med.voll.api.domain.endereco.DadosEndereco;
@@ -37,10 +38,10 @@ class MedicoRepositoryTest {
 		//given ou arrange:
 		var proximaSegundaAs10 = LocalDate.now().with(TemporalAdjusters.next(DayOfWeek.MONDAY)).atTime(10, 0);
 		//when ou act:
-		var medico = cadastrarMedico("Medico", "medico@voll.med", "123456", Especialidade.NEUROLOGIA);
+		var medico = cadastrarMedico("Medico", "medico@voll.med", "123456", Especialidade.CARDIOLOGIA);
 		var paciente = cadastrarPaciente("Paciente", "paciente@email.com", "00000000000");
 		cadastrarConsulta(medico, paciente, proximaSegundaAs10);
-		var medicoLivre = medicoRepository.escolherMedicoAleatorioPorEspecialidadeEDisponibilidade(Especialidade.NEUROLOGIA, proximaSegundaAs10);	
+		var medicoLivre = medicoRepository.escolherMedicoAleatorioPorEspecialidadeEDisponibilidade(Especialidade.CARDIOLOGIA, proximaSegundaAs10);	
 		//then ou assert:
 		assertThat(medicoLivre).isNull();
 	}
