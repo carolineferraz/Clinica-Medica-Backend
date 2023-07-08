@@ -17,7 +17,7 @@ import med.voll.api.domain.consulta.DadosCancelamentoConsulta;
 import med.voll.api.domain.consulta.DadosDetalhamentoConsulta;
 
 @RestController
-@RequestMapping("consultas")
+@RequestMapping("/consultas")
 @SecurityRequirement(name = "bearer-key")
 public class ConsultaController {
 	
