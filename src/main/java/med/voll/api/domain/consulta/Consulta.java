@@ -22,9 +22,9 @@ import med.voll.api.domain.paciente.Paciente;
 
 @Table(name = "consultas")
 @Entity(name = "Consulta")
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
+//@Getter
+//@NoArgsConstructor
+//@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Consulta {
 

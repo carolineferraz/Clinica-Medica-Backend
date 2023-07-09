@@ -14,9 +14,9 @@ import med.voll.api.domain.endereco.Endereco;
 
 @Table(name = "pacientes")
 @Entity
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
+//@Getter
+//@NoArgsConstructor
+//@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Paciente {
 	
